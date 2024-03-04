@@ -37,6 +37,9 @@ public class PlayerBehaviour : MonoBehaviour
     public float yaw = 0.0f;
     public Camera Main_Camera;
 
+    public delegate void JumpingEvent();
+
+    public event JumpingEvent playerJump;
 
     void Start()
     {
@@ -115,6 +118,8 @@ public class PlayerBehaviour : MonoBehaviour
             bulletRB.velocity = this.transform.forward * bulletSpeed;
 
             canShoot = false;
+
+            playerJump();
         }
     }
 
